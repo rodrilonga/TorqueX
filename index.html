@@ -1,81 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TorqueX - Inicio</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
 
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-
-<body>
-
-    <header>
-        <nav>
-
-            <a href="index.html">
-                <img class="logo" src="img/logo-torquex.png" alt="Logo de TorqueX">
-            </a>
-
-            <a href="index.html">Home</a>
-
-            <a href="pages/motor.html">Motor</a>
-            <a href="pages/frenos.html">Frenos</a>
-            <a href="pages/suspension.html">Suspensión</a>
-            <a href="pages/accesorios.html">Accesorios</a>
-
-            <a href="pages/login.html">Iniciar sesión</a>
-            <a href="pages/registro.html">Registrarse</a>
-
-        </nav>
-    </header>
+  <body>
+    <div id="navbar"></div>
 
     <main>
+      <section class="inicio">
+        <h1>Bienvenido a TorqueX</h1>
+        <p>Tu tienda online de repuestos y accesorios para vehículos.</p>
+      </section>
 
-        <section class="inicio">
+      <section class="categorias">
+        <h2>Nuestras categorías</h2>
 
-            <h1>Bienvenido a TorqueX</h1>
+        <div class="categorias-lista">
+          <a href="./pages/motor.html" class="categoria">
+            <h3>Motor</h3>
+            <p>Repuestos y productos para motor.</p>
+          </a>
 
-            <p>
-                Tu tienda online de repuestos y accesorios para vehículos.
-            </p>
+          <a href="./pages/frenos.html" class="categoria">
+            <h3>Frenos</h3>
+            <p>Productos para el sistema de frenos.</p>
+          </a>
 
-        </section>
+          <a href="./pages/suspension.html" class="categoria">
+            <h3>Suspensión</h3>
+            <p>Repuestos para suspensión.</p>
+          </a>
 
-        <section class="categorias">
-
-            <h2>Nuestras categorías</h2>
-
-            <div class="categorias-lista">
-
-                <a href="pages/motor.html" class="categoria">
-                    <h3>Motor</h3>
-                    <p>Repuestos y productos para motor.</p>
-                </a>
-
-                <a href="pages/frenos.html" class="categoria">
-                    <h3>Frenos</h3>
-                    <p>Productos para el sistema de frenos.</p>
-                </a>
-
-                <a href="pages/suspension.html" class="categoria">
-                    <h3>Suspensión</h3>
-                    <p>Repuestos para suspensión.</p>
-                </a>
-
-                <a href="pages/accesorios.html" class="categoria">
-                    <h3>Accesorios</h3>
-                    <p>Accesorios para tu vehículo.</p>
-                </a>
-
-            </div>
-
-        </section>
-
+          <a href="./pages/accesorios.html" class="categoria">
+            <h3>Accesorios</h3>
+            <p>Accesorios para tu vehículo.</p>
+          </a>
+        </div>
+      </section>
     </main>
 
-</body>
+    <footer>
+      <p>© 2026 TorqueX - Repuestos y accesorios para vehículos</p>
+      <p>Todos los derechos reservados.</p>
+    </footer>
 
+    <script src="./js/navbar.js"></script>
+  </body>
 </html>

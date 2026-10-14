@@ -1,256 +1,355 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #F2F2F2;
-    margin: 0;
-    color: #222222;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  color: #222222;
 }
 
 h1 {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 15px;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 h2 {
-    font-size: 26px;
-    font-weight: bold;
+  font-size: 26px;
+  font-weight: bold;
 }
-
-
-nav {
-    background-color: #1F1F1F;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-nav a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 12px;
-    border-radius: 5px;
-}
-
-nav a:hover {
-    background-color: #E63946;
-    color: #FFFFFF;
-}
-
-
-.logo {
-    width: 100px;
-    height: auto;
-}
-
-nav a:first-child:hover {
-    background-color: transparent;
-}
-
 
 main {
-    background-color: #FFFFFF;
-    margin: 30px auto;
-    padding: 30px;
-    max-width: 1100px;
-    border-radius: 10px;
+  background-color: #ffffff;
+  margin: 30px auto;
+  padding: 30px;
+  max-width: 1100px;
+  border-radius: 10px;
 }
 
-
 button {
-    background-color: #E63946;
-    color: #FFFFFF;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
+  background-color: #e63946;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #C92F3B;
+  background-color: #c92f3b;
 }
 
-
 form {
-    max-width: 500px;
+  max-width: 500px;
 }
 
 form div {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #CCCCCC;
-    border-radius: 5px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 input:focus {
-    border-color: #E63946;
-    outline: none;
+  border-color: #e63946;
+  outline: none;
 }
 
-
 .productos {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .card {
-    background-color: #FFFFFF;
-    width: 250px;
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid #E63946;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+  background-color: #ffffff;
+  width: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #e63946;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
 }
 
 .card img {
-    width: 100%;
-    height: 180px;
-    object-fit: contain;
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
 }
 
 .card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .card p {
-    color: #555555;
+  color: #555555;
 }
 
 .precio {
-    font-size: 20px;
-    font-weight: bold;
-    color: #E63946;
+  font-size: 20px;
+  font-weight: bold;
+  color: #e63946;
 }
 
+.cantidad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.cantidad button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.cantidad button:disabled {
+  background-color: #cccccc;
+  color: #888888;
+  cursor: not-allowed;
+}
+
+.cantidad button:disabled:hover {
+  background-color: #cccccc;
+}
+
+.numero-cantidad {
+  min-width: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card .subtotal {
+  font-weight: bold;
+  color: #222222;
+}
+
+.btn-comprar {
+  width: 100%;
+}
 
 .inicio {
-    text-align: center;
-    padding: 30px;
+  text-align: center;
+  padding: 30px;
 }
 
 .inicio h1 {
-    font-size: 40px;
-    margin-bottom: 10px;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
 .inicio p {
-    font-size: 18px;
-    color: #555555;
+  font-size: 18px;
+  color: #555555;
 }
 
-
 .categorias {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .categorias h2 {
-    text-align: center;
-    margin-bottom: 25px;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 .categorias-lista {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .categoria {
-    background-color: #FFFFFF;
-    width: 200px;
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid #E63946;
-    text-decoration: none;
-    color: #222222;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+  background-color: #ffffff;
+  width: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #e63946;
+  text-decoration: none;
+  color: #222222;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .categoria:hover {
-    background-color: #F2F2F2;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
+  background-color: #f2f2f2;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
 }
 
 .categoria h3 {
-    color: #E63946;
-    font-size: 22px;
-    margin-bottom: 10px;
+  color: #e63946;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
 .categoria p {
-    color: #555555;
+  color: #555555;
 }
 
-
 .pagina-formulario {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 35px;
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    border: 2px solid #E63946;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 35px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 2px solid #e63946;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .pagina-formulario h1 {
-    text-align: center;
-    color: #222222;
-    margin-bottom: 30px;
+  text-align: center;
+  color: #222222;
+  margin-bottom: 30px;
 }
 
 .formulario {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .formulario div {
-    margin-bottom: 18px;
+  margin-bottom: 18px;
 }
 
 .formulario label {
-    display: block;
-    margin-bottom: 7px;
-    font-weight: bold;
-    color: #222222;
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+  color: #222222;
 }
 
 .formulario input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #CCCCCC;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 15px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 15px;
 }
 
 .formulario input:focus {
-    border-color: #E63946;
-    outline: none;
-    box-shadow: 0 0 5px rgba(230, 57, 70, 0.3);
+  border-color: #e63946;
+  outline: none;
+  box-shadow: 0 0 5px rgba(230, 57, 70, 0.3);
 }
 
 .formulario button {
-    width: 100%;
-    margin-top: 10px;
-    padding: 12px;
-    font-size: 16px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+footer {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+footer p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  background-color: #1f1f1f;
+  padding: 15px 25px;
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a,
+nav ul li button {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #e63946;
+}
+
+.btn-logout {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.btn-logout:hover {
+  color: #e63946;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+
+nav .logo {
+  width: 80px;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .productos {
+    justify-content: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+
+  nav .container {
+    flex-direction: column;
+  }
 }

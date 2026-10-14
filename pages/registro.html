@@ -1,88 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>TorqueX - Registro</title>
 
-    <link rel="stylesheet" href="../styles/style.css">
-</head>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
 
-<body>
-
-    <header>
-        <nav>
-
-            <a href="../index.html">
-                <img class="logo" src="../img/logo-torquex.png" alt="Logo de TorqueX">
-            </a>
-
-            <a href="../index.html">Home</a>
-
-            <a href="motor.html">Motor</a>
-            <a href="frenos.html">Frenos</a>
-            <a href="suspension.html">Suspensión</a>
-            <a href="accesorios.html">Accesorios</a>
-
-            <a href="login.html">Iniciar sesión</a>
-            <a href="registro.html">Registrarse</a>
-
-        </nav>
-    </header>
-
+  <body>
     <main class="pagina-formulario">
+      <h1>Crear una cuenta</h1>
 
-        <h1>Crear una cuenta</h1>
+      <form action="#" method="post" class="formulario">
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
 
-        <form action="#" method="post" class="formulario">
+        <br />
 
-            <div>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
+        <div>
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" required />
+        </div>
 
-            <br>
+        <br />
 
-            <div>
-                <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" required>
-            </div>
+        <div>
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
 
-            <br>
+        <br />
 
-            <div>
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+        <div>
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
 
-            <br>
+        <br />
 
-            <div>
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
+        <div>
+          <label for="fechaNacimiento">Fecha de nacimiento:</label>
+          <input
+            type="date"
+            id="fechaNacimiento"
+            name="fechaNacimiento"
+            required
+          />
+        </div>
 
-            <br>
+        <br />
 
-            <div>
-                <label for="fechaNacimiento">Fecha de nacimiento:</label>
-                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-            </div>
+        <button type="submit">Registrarme</button>
+      </form>
 
-            <br>
-
-            <button type="submit">Registrarme</button>
-
-        </form>
-
-        <p>
-            ¿Ya tenés una cuenta?
-            <a href="login.html">Iniciá sesión aquí</a>
-        </p>
-
+      <p>
+        ¿Ya tenés una cuenta?
+        <a href="./login.html">Iniciá sesión aquí</a>
+      </p>
     </main>
 
-</body>
+    <footer>
+      <p>© 2026 TorqueX - Repuestos y accesorios para vehículos</p>
+      <p>Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../js/navbar.js"></script>
+  </body>
 </html>

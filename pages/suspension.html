@@ -1,60 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>TorqueX - Suspensión</title>
 
-    <link rel="stylesheet" href="../styles/style.css">
-</head>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
 
-<body>
-
-    <header>
-        <nav>
-
-            <a href="../index.html">
-                <img class="logo" src="../img/logo-torquex.png" alt="Logo de TorqueX">
-            </a>
-
-            <a href="../index.html">Home</a>
-
-            <a href="motor.html">Motor</a>
-            <a href="frenos.html">Frenos</a>
-            <a href="suspension.html">Suspensión</a>
-            <a href="accesorios.html">Accesorios</a>
-
-            <a href="login.html">Iniciar sesión</a>
-            <a href="registro.html">Registrarse</a>
-
-        </nav>
-    </header>
+  <body>
+    <div id="navbar"></div>
 
     <main>
+      <h1>Productos de Suspensión</h1>
 
-    <h1>Productos de Suspensión</h1>
+      <div class="productos" id="listaProductos" data-categoria="suspension"></div>
+    </main>
 
-    <div class="productos">
+    <footer>
+      <p>© 2026 TorqueX - Repuestos y accesorios para vehículos</p>
+      <p>Todos los derechos reservados.</p>
+    </footer>
 
-        <div class="card">
-
-            <img src="../img/Amortiguadores-Del-cronos-1.3.webp" alt="Amortiguador">
-
-            <h3>Amortiguador</h3>
-
-            <p>Amortiguadores Delanteros para Fiat Cronos 1.3.</p>
-
-            <p class="precio">$45.000</p>
-
-            <button type="button">Comprar</button>
-
-        </div>
-
-    </div>
-
-</main>
-
-</body>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/cards.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
 </html>
