@@ -11,7 +11,6 @@ function renderNavbar() {
   if (!contenedor) return;
 
   const enPages = location.pathname.includes("/pages/");
-
   const prefijo = enPages ? "../" : "./";
 
   const linksHTML = links
@@ -24,19 +23,28 @@ function renderNavbar() {
     .join("");
 
   contenedor.innerHTML = `
-    <nav class="navbar">
-      <a class="logo-link" href="${prefijo}index.html">
-        <img class="logo" src="${prefijo}img/logo-torquex.png" alt="Logo de TorqueX">
-      </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand logo-link" href="${prefijo}index.html">
+          <img class="logo" src="${prefijo}img/logo-torquex.png" alt="Logo de TorqueX">
+        </a>
 
-      <ul class="nav-menu">
-        ${linksHTML}
-        <li class="nav-item">
-          <button class="btn-logout" id="btnLogout" type="button">
-            Cerrar sesión
-          </button>
-        </li>
-      </ul>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            ${linksHTML}
+            <li class="nav-item">
+              <button class="nav-link btn-logout" id="btnLogout" type="button">
+                Cerrar sesión
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>`;
 
   const btnLogout = document.getElementById("btnLogout");
