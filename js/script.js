@@ -41,16 +41,7 @@ if (formLogin) {
    el usuario esté logueado. Si no hay sesión, lo enviamos
    al login.
    -------------------------------------------------------- */
-const rutaActual = location.pathname;
-const esLogin = rutaActual.includes("login.html");
-const esRegistro = rutaActual.includes("registro.html");
-
-const prefijo = rutaActual.includes("/pages/") ? "../" : "./";
-const usuario = JSON.parse(sessionStorage.getItem("usuarioLogueado"));
-
-if (!usuario && !esLogin && !esRegistro) {
-  location.href = `${prefijo}pages/login.html`;
-}
+/* Se puede navegar sin iniciar sesión. El login es opcional. */
 
 /* --------------------------------------------------------
    Carrito de compras (localStorage)

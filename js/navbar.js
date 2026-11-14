@@ -23,11 +23,28 @@ function renderNavbar() {
     .join("");
 
   const usuario = JSON.parse(sessionStorage.getItem("usuarioLogueado"));
-  const usuarioHTML = usuario
-    ? `<li class="nav-item">
-         <span class="nav-link text-light">${usuario.email}</span>
-       </li>`
-    : "";
+  const esLoginPage = location.pathname.includes("login.html");
+  const esRegistroPage = location.pathname.includes("registro.html");
+
+  let authHTML = "";
+  if (usuario) {
+    authHTML = `
+      <li class="nav-item">
+        <span class="nav-link text-light">${usuario.email}</span>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link btn-logout" id="btnLogout" type="button">
+          Cerrar sesión
+        </button>
+      </li>`;
+  } else if (!esLoginPage && !esRegistroPage) {
+    authHTML = `
+      <li class="nav-item">
+        <a class="nav-link" href="${prefijo}pages/login.html">
+          Iniciar sesión
+        </a>
+      </li>`;
+  }
 
   contenedor.innerHTML = `
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,12 +66,7 @@ function renderNavbar() {
                 🛒 Mi carrito
               </a>
             </li>
-            ${usuarioHTML}
-            <li class="nav-item">
-              <button class="nav-link btn-logout" id="btnLogout" type="button">
-                Cerrar sesión
-              </button>
-            </li>
+            ${authHTML}
           </ul>
         </div>
       </div>
