@@ -14,6 +14,106 @@ function formatearPrecio(valor) {
   return "$" + valor;
 }
 
+/* Datos estáticos de respaldo si falla el fetch (para probar sin servidor) */
+const PRODUCTOS_RESPALDO = [
+  {
+    id: "motor-1",
+    categoria: "motor",
+    titulo: "Filtro de aceite",
+    descripcion: "Filtro de aceite para motor Cronos 1.3.",
+    imagen: "img/Filtro-aceite-fiat-cronos-1.3.webp",
+    precio: 15000
+  },
+  {
+    id: "motor-2",
+    categoria: "motor",
+    titulo: "Kit de Distribución",
+    descripcion: "Kit de distribución para motor Cronos 1.3.",
+    imagen: "img/Kit-distribucion-fiat-cronos-1.3.webp",
+    precio: 30000
+  },
+  {
+    id: "motor-3",
+    categoria: "motor",
+    titulo: "Correa Poly V",
+    descripcion: "Correa Poly V para motor Cronos 1.3.",
+    imagen: "img/Correa-polyv-fiat-cronos-1.3.webp",
+    precio: 12000
+  },
+  {
+    id: "frenos-1",
+    categoria: "frenos",
+    titulo: "Pastillas de freno",
+    descripcion: "Pastillas de freno para Fiat Cronos 1.3.",
+    imagen: "img/Pastillas-freno-fiat-cronos-1.3.webp",
+    precio: 25000
+  },
+  {
+    id: "frenos-2",
+    categoria: "frenos",
+    titulo: "Discos de freno",
+    descripcion: "Discos de freno para Fiat Cronos 1.3.",
+    imagen: "img/Discos-de-frenos-fiat-cronos-1.3.webp",
+    precio: 30000
+  },
+  {
+    id: "frenos-3",
+    categoria: "frenos",
+    titulo: "Campanas de freno",
+    descripcion: "Campanas de freno para Fiat Cronos 1.3.",
+    imagen: "img/Campanas-de-frenos-fiat-cronos-1.3.webp",
+    precio: 20000
+  },
+  {
+    id: "suspension-1",
+    categoria: "suspension",
+    titulo: "Amortiguador",
+    descripcion: "Amortiguadores delanteros para Fiat Cronos 1.3.",
+    imagen: "img/Amortiguadores-Del-fiat-cronos-1.3.webp",
+    precio: 45000
+  },
+  {
+    id: "suspension-2",
+    categoria: "suspension",
+    titulo: "Cazoletas de suspensión",
+    descripcion: "Cazoletas de suspensión para Fiat Cronos 1.3.",
+    imagen: "img/Cazoletas-fiat-cronos-1.3.webp",
+    precio: 98000
+  },
+  {
+    id: "suspension-3",
+    categoria: "suspension",
+    titulo: "Bieletas de barra estabilizadora",
+    descripcion: "Bieletas de barra estabilizadora para Fiat Cronos 1.3.",
+    imagen: "img/Bieletas-fiat-cronos-1.3.webp",
+    precio: 14000
+  },
+  {
+    id: "accesorios-1",
+    categoria: "accesorios",
+    titulo: "Alfombra para auto",
+    descripcion: "Alfombras originales para Fiat Cronos 1.3.",
+    imagen: "img/Alfombras-fiat-cronos-1.3.webp",
+    precio: 18000
+  },
+  {
+    id: "accesorios-2",
+    categoria: "accesorios",
+    titulo: "Escobillas limpiaparabrisas",
+    descripcion: "Escobillas limpiaparabrisas originales para Fiat Cronos 1.3.",
+    imagen: "img/Escobillas-limpiaparabrisas-fiat-cronos-1.3.webp",
+    precio: 12000
+  },
+  {
+    id: "accesorios-3",
+    categoria: "accesorios",
+    titulo: "Cachas de espejos",
+    descripcion: "Cachas de espejos originales para Fiat Cronos 1.3.",
+    imagen: "img/Cacha-espejo-retrovisor-fiat-cronos-1.3.webp",
+    precio: 7000
+  }
+];
+
 /* Trae los productos desde el archivo JSON */
 async function cargarProductos() {
   try {
@@ -25,7 +125,8 @@ async function cargarProductos() {
     productos = await respuesta.json();
   } catch (error) {
     console.error("Error al cargar productos:", error);
-    productos = [];
+    /* Usamos datos de respaldo para que se vean las cards igualmente */
+    productos = PRODUCTOS_RESPALDO;
   }
 }
 
