@@ -22,6 +22,13 @@ function renderNavbar() {
     )
     .join("");
 
+  const usuario = JSON.parse(sessionStorage.getItem("usuarioLogueado"));
+  const usuarioHTML = usuario
+    ? `<li class="nav-item">
+         <span class="nav-link text-light">${usuario.email}</span>
+       </li>`
+    : "";
+
   contenedor.innerHTML = `
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
@@ -38,6 +45,12 @@ function renderNavbar() {
           <ul class="navbar-nav ms-auto">
             ${linksHTML}
             <li class="nav-item">
+              <a class="nav-link" href="${prefijo}pages/carrito.html">
+                🛒 Mi carrito
+              </a>
+            </li>
+            ${usuarioHTML}
+            <li class="nav-item">
               <button class="nav-link btn-logout" id="btnLogout" type="button">
                 Cerrar sesión
               </button>
@@ -50,6 +63,7 @@ function renderNavbar() {
   const btnLogout = document.getElementById("btnLogout");
 
   function manejarLogout() {
+    sessionStorage.removeItem("usuarioLogueado");
     location.href = prefijo + "pages/login.html";
   }
 
