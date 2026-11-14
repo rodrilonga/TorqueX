@@ -44,12 +44,12 @@ if (formLogin) {
 const rutaActual = location.pathname;
 const esLogin = rutaActual.includes("login.html");
 const esRegistro = rutaActual.includes("registro.html");
-const esIndex = rutaActual.endsWith("index.html") || rutaActual === "/";
 
+const prefijo = rutaActual.includes("/pages/") ? "../" : "./";
 const usuario = JSON.parse(sessionStorage.getItem("usuarioLogueado"));
 
 if (!usuario && !esLogin && !esRegistro) {
-  location.href = "./pages/login.html";
+  location.href = `${prefijo}pages/login.html`;
 }
 
 /* --------------------------------------------------------

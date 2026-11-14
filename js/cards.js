@@ -17,7 +17,8 @@ function formatearPrecio(valor) {
 /* Trae los productos desde el archivo JSON */
 async function cargarProductos() {
   try {
-    const respuesta = await fetch("./productos.json");
+    const prefijo = location.pathname.includes("/pages/") ? "../" : "./";
+    const respuesta = await fetch(`${prefijo}productos.json`);
     if (!respuesta.ok) {
       throw new Error("No se pudo cargar el archivo de productos");
     }
