@@ -3,7 +3,6 @@
    ------------------------------------------------------------
    Maneja:
    - Inicio de sesión (guarda usuario en sessionStorage)
-   - Redirección de páginas protegidas (solo usuarios logueados)
    - Agregar productos al carrito (localStorage)
    - Carga de productos en la página principal
    ============================================================ */
@@ -24,7 +23,8 @@ function manejarLogin() {
   sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
 
   /* Redirigimos a la página principal */
-  location.href = "../index.html";
+  const prefijo = location.pathname.includes("/pages/") ? "../" : "./";
+  location.href = `${prefijo}index.html`;
 }
 
 if (formLogin) {
@@ -33,15 +33,6 @@ if (formLogin) {
     manejarLogin();
   });
 }
-
-/* --------------------------------------------------------
-   Verificar sesión en páginas protegidas
-   --------------------------------------------------------
-   Las páginas de categorías y el carrito requieren que
-   el usuario esté logueado. Si no hay sesión, lo enviamos
-   al login.
-   -------------------------------------------------------- */
-/* Se puede navegar sin iniciar sesión. El login es opcional. */
 
 /* --------------------------------------------------------
    Carrito de compras (localStorage)
@@ -98,9 +89,8 @@ document.addEventListener("click", function (evento) {
 const listaHome = document.getElementById("listaHome");
 
 if (listaHome) {
-  cargarProductos().then(() => {
-    renderHomeProductos(listaHome);
-  });
+  /* cargarProductos() ya se ejecutó en cards.js; aquí solo renderizamos */
+  renderHomeProductos(listaHome);
 }
 
 /* --------------------------------------------------------
@@ -110,8 +100,5 @@ const listaProductos = document.getElementById("listaProductos");
 
 if (listaProductos) {
   const categoria = listaProductos.getAttribute("data-categoria");
-
-  cargarProductos().then(() => {
-    renderProductos(listaProductos, categoria);
-  });
+  renderProductos(listaProductos, categoria);
 }

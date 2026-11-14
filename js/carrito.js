@@ -2,7 +2,8 @@
    TORQUEX - Carrito de compras
    ------------------------------------------------------------
    Muestra los productos guardados en localStorage y permite
-   eliminarlos del carrito.
+   eliminarlos del carrito. Usa el array global `productos`
+   definido en cards.js para mostrar los datos de cada ítem.
    ============================================================ */
 
 const listaCarrito = document.getElementById("listaCarrito");
@@ -11,19 +12,13 @@ const carritoVacio = document.getElementById("carrito-vacio");
 const carritoContenido = document.getElementById("carrito-contenido");
 const btnVaciar = document.getElementById("btnVaciarCarrito");
 
-let productos = []; /* Se llena desde productos.json */
+/* `productos` está definido globalmente en cards.js. No lo
+   redeclaramos aquí para compartir los mismos datos. */
 
-/* Carga los productos para poder mostrar sus datos en el carrito */
+/* Carga y renderiza el carrito */
 async function initCarrito() {
-  try {
-    const prefijo = location.pathname.includes("/pages/") ? "../" : "./";
-    const respuesta = await fetch(`${prefijo}productos.json`);
-    productos = await respuesta.json();
-  } catch (error) {
-    console.error("Error al cargar productos:", error);
-    productos = [];
-  }
-
+  /* Esperamos un poco a que cards.js termine de cargar los productos */
+  await new Promise((resolve) => setTimeout(resolve, 100));
   renderizarCarrito();
 }
 
@@ -32,19 +27,19 @@ function renderizarCarrito() {
   const carrito = obtenerCarrito();
 
   if (!carrito || carrito.length === 0) {
-    carritoVacio.style.display = "block";
-    carritoContenido.style.display = "none";
+    if (carritoVacio) carritoVacio.style.display = "block";
+    if (carritoContenido) carritoContenido.style.display = "none";
     return;
   }
 
-  carritoVacio.style.display = "none";
-  carritoContenido.style.display = "block";
+  if (carritoVacio) carritoVacio.style.display = "none";
+  if (carritoContenido) carritoContenido.style.display = "block";
 
   listaCarrito.innerHTML = "";
   let total = 0;
 
   for (const item of carrito) {
-    const producto = productos.find((p) => p.id === item.id);
+    const producto = obtenerProductoPorId(item.id);
     if (!producto) continue;
 
     const subtotal = producto.precio * item.cantidad;
@@ -92,7 +87,7 @@ function vaciarCarrito() {
   }
 }
 
-/* Escucha los clicks de eliminar */
+/* Escucha los clicks de eliminar y vaciar */
 document.addEventListener("click", function (evento) {
   if (evento.target.classList.contains("btn-eliminar")) {
     const productoId = evento.target.getAttribute("data-id");

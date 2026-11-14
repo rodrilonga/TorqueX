@@ -6,7 +6,8 @@
    precio, controles de cantidad y botón "Añadir al carrito".
    ============================================================ */
 
-/* Array que se llena con los datos del JSON */
+/* Array global con los productos. Se llena desde el JSON o
+   desde los datos de respaldo si falla el fetch. */
 let productos = [];
 
 /* Formatea un número como precio */
@@ -14,8 +15,11 @@ function formatearPrecio(valor) {
   return "$" + valor;
 }
 
-/* Datos estáticos de respaldo si falla el fetch (para probar sin servidor) */
+/* Datos estáticos de respaldo si falla el fetch (para probar
+   abriendo el HTML directamente sin servidor). Incluye varios
+   productos por categoría para que se vea bien. */
 const PRODUCTOS_RESPALDO = [
+  /* Motor */
   {
     id: "motor-1",
     categoria: "motor",
@@ -41,6 +45,23 @@ const PRODUCTOS_RESPALDO = [
     precio: 12000
   },
   {
+    id: "motor-4",
+    categoria: "motor",
+    titulo: "Kit de Embrague",
+    descripcion: "Kit de embrague para motor Cronos 1.3.",
+    imagen: "img/Kit-embrague-fiat-cronos-1.3.webp",
+    precio: 200000
+  },
+  {
+    id: "motor-5",
+    categoria: "motor",
+    titulo: "Bomba de agua",
+    descripcion: "Bomba de agua para motor Cronos 1.3.",
+    imagen: "img/Bomba-de-agua-fiat-cronos-1.3.webp",
+    precio: 75000
+  },
+  /* Frenos */
+  {
     id: "frenos-1",
     categoria: "frenos",
     titulo: "Pastillas de freno",
@@ -64,6 +85,23 @@ const PRODUCTOS_RESPALDO = [
     imagen: "img/Campanas-de-frenos-fiat-cronos-1.3.webp",
     precio: 20000
   },
+  {
+    id: "frenos-4",
+    categoria: "frenos",
+    titulo: "Cintas de freno",
+    descripcion: "Cintas de freno para Fiat Cronos 1.3.",
+    imagen: "img/Cintas-de-frenos-fiat-cronos-1.3.webp",
+    precio: 15000
+  },
+  {
+    id: "frenos-5",
+    categoria: "frenos",
+    titulo: "Cable de freno de mano",
+    descripcion: "Cable de freno de mano para Fiat Cronos 1.3.",
+    imagen: "img/Cable-de-freno-fiat-cronos-1.3.webp",
+    precio: 10000
+  },
+  /* Suspensión */
   {
     id: "suspension-1",
     categoria: "suspension",
@@ -89,6 +127,23 @@ const PRODUCTOS_RESPALDO = [
     precio: 14000
   },
   {
+    id: "suspension-4",
+    categoria: "suspension",
+    titulo: "Parrillas de suspensión",
+    descripcion: "Parrillas de suspensión para Fiat Cronos 1.3.",
+    imagen: "img/Parrillas-de-suspension-fiat-cronos-1.3.webp",
+    precio: 40000
+  },
+  {
+    id: "suspension-5",
+    categoria: "suspension",
+    titulo: "Cremallera de dirección",
+    descripcion: "Cremallera de dirección eléctrica para Fiat Cronos 1.3.",
+    imagen: "img/Cremallera-direccion-fiat-cronos-1.3.webp",
+    precio: 150000
+  },
+  /* Accesorios */
+  {
     id: "accesorios-1",
     categoria: "accesorios",
     titulo: "Alfombra para auto",
@@ -111,6 +166,30 @@ const PRODUCTOS_RESPALDO = [
     descripcion: "Cachas de espejos originales para Fiat Cronos 1.3.",
     imagen: "img/Cacha-espejo-retrovisor-fiat-cronos-1.3.webp",
     precio: 7000
+  },
+  {
+    id: "accesorios-4",
+    categoria: "accesorios",
+    titulo: "Red de carga",
+    descripcion: "Red de carga original para Fiat Cronos 1.3.",
+    imagen: "img/Red-elastica-fiat-cronos-1.3.webp",
+    precio: 5000
+  },
+  {
+    id: "accesorios-5",
+    categoria: "accesorios",
+    titulo: "Tuercas antirrobo",
+    descripcion: "Tuercas antirrobo originales para Fiat Cronos 1.3.",
+    imagen: "img/Tuercas-antirrobo-fiat-cronos-1.3.webp",
+    precio: 10000
+  },
+  {
+    id: "accesorios-6",
+    categoria: "accesorios",
+    titulo: "Chapon cubre cárter",
+    descripcion: "Chapon cubre cárter original para Fiat Cronos 1.3.",
+    imagen: "img/Chapon-cubrecarter-fiat-cronos-1.3.webp",
+    precio: 120000
   }
 ];
 
@@ -191,14 +270,20 @@ function crearCard(producto) {
 function renderProductos(contenedor, categoria) {
   contenedor.innerHTML = "";
 
-  for (const producto of productos) {
-    if (producto.categoria === categoria) {
-      contenedor.appendChild(crearCard(producto));
-    }
+  const filtrados = productos.filter((p) => p.categoria === categoria);
+
+  if (filtrados.length === 0) {
+    contenedor.innerHTML =
+      '<p style="text-align:center; color:#666;">No hay productos en esta categoría.</p>';
+    return;
+  }
+
+  for (const producto of filtrados) {
+    contenedor.appendChild(crearCard(producto));
   }
 }
 
-/* Muestra los primeros N productos de cada categoría (para el home) */
+/* Muestra los primeros 3 productos de cada categoría (para el home) */
 function renderHomeProductos(contenedor) {
   contenedor.innerHTML = "";
 
