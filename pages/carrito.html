@@ -6,8 +6,16 @@
 
     <title>TorqueX - Carrito de compras</title>
 
+    <script src="../js/tema.js"></script>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Lato:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/style.css" />
@@ -17,34 +25,47 @@
     <div id="navbar"></div>
 
     <main>
-      <h2>Tu carrito de compras</h2>
+      <h1>Tu carrito de compras</h1>
 
       <div id="carrito-vacio" style="display: none;">
+        <p class="carrito-vacio-icono">🛒</p>
         <p>Tu carrito está vacío.</p>
         <a href="./motor.html" class="btn-comprar">Seguir comprando</a>
       </div>
 
-      <div id="carrito-contenido">
-        <table class="tabla-carrito">
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Precio unitario</th>
-              <th>Cantidad</th>
-              <th>Subtotal</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody id="lista-carrito"></tbody>
-        </table>
+      <div id="carrito-contenido" style="display: none;">
+        <div class="tabla-carrito-contenedor">
+          <table class="tabla-carrito">
+            <thead>
+              <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio unitario</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="listaCarrito"></tbody>
+          </table>
+        </div>
 
         <div class="resumen-carrito">
           <h3>Total: <span id="total-carrito">$0</span></h3>
-          <button type="button" id="btnVaciarCarrito" class="btn-vaciar">
-            Vaciar carrito
-          </button>
-          <a href="./index.html" class="btn-seguir">Volver al inicio</a>
+
+          <div class="acciones-carrito">
+            <button type="button" id="btnWhatsapp" class="btn-whatsapp">
+              Comprar por WhatsApp
+            </button>
+            <button type="button" id="btnVaciarCarrito" class="btn-vaciar">
+              Vaciar carrito
+            </button>
+            <a href="../index.html" class="btn-seguir">Volver al inicio</a>
+          </div>
         </div>
+
+        <p class="nota-carrito">
+          El pedido se envía por WhatsApp y se coordina el pago y la entrega.
+        </p>
       </div>
     </main>
 

@@ -6,8 +6,16 @@
 
     <title>TorqueX - Registro</title>
 
+    <script src="../js/tema.js"></script>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Lato:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/style.css" />
@@ -17,7 +25,7 @@
     <main class="pagina-formulario">
       <h1>Crear una cuenta</h1>
 
-      <form action="#" method="post" class="formulario">
+      <form action="#" method="post" class="formulario" id="formRegistro">
         <div>
           <label for="nombre">Nombre:</label>
           <input type="text" id="nombre" name="nombre" required />
@@ -65,6 +73,10 @@
         ¿Ya tenés una cuenta?
         <a href="./login.html">Iniciá sesión aquí</a>
       </p>
+
+      <p>
+        <a href="../index.html">Volver al inicio</a>
+      </p>
     </main>
 
     <footer>
@@ -73,6 +85,7 @@
     </footer>
 
     <script src="../js/navbar.js"></script>
+    <script src="../js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

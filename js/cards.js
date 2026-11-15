@@ -1,23 +1,12 @@
-/* ============================================================
-   TORQUEX - Cards de producto
-   ------------------------------------------------------------
-   Carga los productos desde productos.json mediante fetch()
-   y genera las tarjetas con imagen, título, descripción,
-   precio, controles de cantidad y botón "Añadir al carrito".
-   ============================================================ */
-
-/* Array global con los productos. Se llena desde el JSON o
-   desde los datos de respaldo si falla el fetch. */
+/* Productos */
 let productos = [];
 
 /* Formatea un número como precio */
 function formatearPrecio(valor) {
-  return "$" + valor;
+  return "$" + valor.toLocaleString("es-AR");
 }
 
-/* Datos estáticos de respaldo si falla el fetch (para probar
-   abriendo el HTML directamente sin servidor). Incluye varios
-   productos por categoría para que se vea bien. */
+/* Datos de respaldo */
 const PRODUCTOS_RESPALDO = [
   /* Motor */
   {
@@ -26,7 +15,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Filtro de aceite",
     descripcion: "Filtro de aceite para motor Cronos 1.3.",
     imagen: "img/Filtro-aceite-fiat-cronos-1.3.webp",
-    precio: 15000
+    precio: 15000,
   },
   {
     id: "motor-2",
@@ -34,7 +23,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Kit de Distribución",
     descripcion: "Kit de distribución para motor Cronos 1.3.",
     imagen: "img/Kit-distribucion-fiat-cronos-1.3.webp",
-    precio: 30000
+    precio: 30000,
   },
   {
     id: "motor-3",
@@ -42,7 +31,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Correa Poly V",
     descripcion: "Correa Poly V para motor Cronos 1.3.",
     imagen: "img/Correa-polyv-fiat-cronos-1.3.webp",
-    precio: 12000
+    precio: 12000,
   },
   {
     id: "motor-4",
@@ -50,7 +39,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Kit de Embrague",
     descripcion: "Kit de embrague para motor Cronos 1.3.",
     imagen: "img/Kit-embrague-fiat-cronos-1.3.webp",
-    precio: 200000
+    precio: 200000,
   },
   {
     id: "motor-5",
@@ -58,8 +47,17 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Bomba de agua",
     descripcion: "Bomba de agua para motor Cronos 1.3.",
     imagen: "img/Bomba-de-agua-fiat-cronos-1.3.webp",
-    precio: 75000
+    precio: 75000,
   },
+  {
+    id: "motor-6",
+    categoria: "motor",
+    titulo: "Kit de Inyectores",
+    descripcion: "Kit de inyectores para motor Cronos 1.3.",
+    imagen: "img/Kit-4-inyectores-fiat-cronos-1.3.webp",
+    precio: 40000,
+  },
+
   /* Frenos */
   {
     id: "frenos-1",
@@ -67,7 +65,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Pastillas de freno",
     descripcion: "Pastillas de freno para Fiat Cronos 1.3.",
     imagen: "img/Pastillas-freno-fiat-cronos-1.3.webp",
-    precio: 25000
+    precio: 25000,
   },
   {
     id: "frenos-2",
@@ -75,7 +73,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Discos de freno",
     descripcion: "Discos de freno para Fiat Cronos 1.3.",
     imagen: "img/Discos-de-frenos-fiat-cronos-1.3.webp",
-    precio: 30000
+    precio: 30000,
   },
   {
     id: "frenos-3",
@@ -83,7 +81,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Campanas de freno",
     descripcion: "Campanas de freno para Fiat Cronos 1.3.",
     imagen: "img/Campanas-de-frenos-fiat-cronos-1.3.webp",
-    precio: 20000
+    precio: 20000,
   },
   {
     id: "frenos-4",
@@ -91,7 +89,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Cintas de freno",
     descripcion: "Cintas de freno para Fiat Cronos 1.3.",
     imagen: "img/Cintas-de-frenos-fiat-cronos-1.3.webp",
-    precio: 15000
+    precio: 15000,
   },
   {
     id: "frenos-5",
@@ -99,8 +97,17 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Cable de freno de mano",
     descripcion: "Cable de freno de mano para Fiat Cronos 1.3.",
     imagen: "img/Cable-de-freno-fiat-cronos-1.3.webp",
-    precio: 10000
+    precio: 10000,
   },
+  {
+    id: "frenos-6",
+    categoria: "frenos",
+    titulo: "Flexible de freno",
+    descripcion: "Flexible de freno para Fiat Cronos 1.3.",
+    imagen: "img/Flexible-de-freno-fiat-cronos-1.3.webp",
+    precio: 8000,
+  },
+
   /* Suspensión */
   {
     id: "suspension-1",
@@ -108,7 +115,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Amortiguador",
     descripcion: "Amortiguadores delanteros para Fiat Cronos 1.3.",
     imagen: "img/Amortiguadores-Del-fiat-cronos-1.3.webp",
-    precio: 45000
+    precio: 45000,
   },
   {
     id: "suspension-2",
@@ -116,7 +123,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Cazoletas de suspensión",
     descripcion: "Cazoletas de suspensión para Fiat Cronos 1.3.",
     imagen: "img/Cazoletas-fiat-cronos-1.3.webp",
-    precio: 98000
+    precio: 98000,
   },
   {
     id: "suspension-3",
@@ -124,7 +131,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Bieletas de barra estabilizadora",
     descripcion: "Bieletas de barra estabilizadora para Fiat Cronos 1.3.",
     imagen: "img/Bieletas-fiat-cronos-1.3.webp",
-    precio: 14000
+    precio: 14000,
   },
   {
     id: "suspension-4",
@@ -132,7 +139,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Parrillas de suspensión",
     descripcion: "Parrillas de suspensión para Fiat Cronos 1.3.",
     imagen: "img/Parrillas-de-suspension-fiat-cronos-1.3.webp",
-    precio: 40000
+    precio: 40000,
   },
   {
     id: "suspension-5",
@@ -140,8 +147,17 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Cremallera de dirección",
     descripcion: "Cremallera de dirección eléctrica para Fiat Cronos 1.3.",
     imagen: "img/Cremallera-direccion-fiat-cronos-1.3.webp",
-    precio: 150000
+    precio: 150000,
   },
+  {
+    id: "suspension-6",
+    categoria: "suspension",
+    titulo: "Espirales de suspensión",
+    descripcion: "Espirales de suspensión delanteros para Fiat Cronos 1.3.",
+    imagen: "img/Espirales-delanteros-fiat-cronos-1.3.webp",
+    precio: 80000,
+  },
+
   /* Accesorios */
   {
     id: "accesorios-1",
@@ -149,7 +165,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Alfombra para auto",
     descripcion: "Alfombras originales para Fiat Cronos 1.3.",
     imagen: "img/Alfombras-fiat-cronos-1.3.webp",
-    precio: 18000
+    precio: 18000,
   },
   {
     id: "accesorios-2",
@@ -157,7 +173,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Escobillas limpiaparabrisas",
     descripcion: "Escobillas limpiaparabrisas originales para Fiat Cronos 1.3.",
     imagen: "img/Escobillas-limpiaparabrisas-fiat-cronos-1.3.webp",
-    precio: 12000
+    precio: 12000,
   },
   {
     id: "accesorios-3",
@@ -165,7 +181,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Cachas de espejos",
     descripcion: "Cachas de espejos originales para Fiat Cronos 1.3.",
     imagen: "img/Cacha-espejo-retrovisor-fiat-cronos-1.3.webp",
-    precio: 7000
+    precio: 7000,
   },
   {
     id: "accesorios-4",
@@ -173,7 +189,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Red de carga",
     descripcion: "Red de carga original para Fiat Cronos 1.3.",
     imagen: "img/Red-elastica-fiat-cronos-1.3.webp",
-    precio: 5000
+    precio: 5000,
   },
   {
     id: "accesorios-5",
@@ -181,7 +197,7 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Tuercas antirrobo",
     descripcion: "Tuercas antirrobo originales para Fiat Cronos 1.3.",
     imagen: "img/Tuercas-antirrobo-fiat-cronos-1.3.webp",
-    precio: 10000
+    precio: 10000,
   },
   {
     id: "accesorios-6",
@@ -189,22 +205,32 @@ const PRODUCTOS_RESPALDO = [
     titulo: "Chapon cubre cárter",
     descripcion: "Chapon cubre cárter original para Fiat Cronos 1.3.",
     imagen: "img/Chapon-cubrecarter-fiat-cronos-1.3.webp",
-    precio: 120000
-  }
+    precio: 120000,
+  },
 ];
 
 /* Trae los productos desde el archivo JSON */
 async function cargarProductos() {
+  /* Ruta del JSON */
+  const prefijo = location.pathname.includes("/pages/") ? "../" : "./";
+
   try {
-    const prefijo = location.pathname.includes("/pages/") ? "../" : "./";
-    const respuesta = await fetch(`${prefijo}productos.json`);
+    const respuesta = await fetch(prefijo + "js/productos.json");
+
     if (!respuesta.ok) {
       throw new Error("No se pudo cargar el archivo de productos");
     }
-    productos = await respuesta.json();
+
+    const datos = await respuesta.json();
+
+    if (!Array.isArray(datos)) {
+      throw new Error("El archivo de productos no es una lista");
+    }
+
+    productos = datos;
   } catch (error) {
     console.error("Error al cargar productos:", error);
-    /* Usamos datos de respaldo para que se vean las cards igualmente */
+    /* Usar respaldo */
     productos = PRODUCTOS_RESPALDO;
   }
 }
@@ -214,31 +240,35 @@ function crearCard(producto) {
   const prefijo = location.pathname.includes("/pages/") ? "../" : "./";
 
   const card = document.createElement("article");
-  card.className = "card";
+  card.className = "producto-card";
 
   card.innerHTML = `
-    <img src="${prefijo}${producto.imagen}" alt="${producto.titulo}">
-    <h3>${producto.titulo}</h3>
-    <p>${producto.descripcion}</p>
-    <p class="precio">${formatearPrecio(producto.precio)}</p>
+    <img src="${prefijo}${producto.imagen}" alt="${producto.titulo}"
+         loading="lazy" decoding="async">
+    <div class="producto-card__body">
+      <p class="producto-card__cat">${producto.categoria}</p>
+      <h3 class="producto-card__nombre">${producto.titulo}</h3>
+      <p class="producto-card__desc">${producto.descripcion}</p>
+      <p class="producto-card__precio">${formatearPrecio(producto.precio)}</p>
+      <p class="producto-card__subtotal">Subtotal: ${formatearPrecio(producto.precio)}</p>
 
-    <div class="cantidad">
-      <button type="button" class="btn-restar">-</button>
-      <span class="numero-cantidad">1</span>
-      <button type="button" class="btn-sumar">+</button>
+      <div class="producto-card__acciones">
+        <div class="cantidad">
+          <button type="button" class="btn-restar">-</button>
+          <span class="numero-cantidad">1</span>
+          <button type="button" class="btn-sumar">+</button>
+        </div>
+        <button type="button" class="btn-agregar" data-id="${producto.id}">
+          Agregar al carrito
+        </button>
+      </div>
     </div>
-
-    <p class="subtotal">Subtotal: ${formatearPrecio(producto.precio)}</p>
-
-    <button type="button" class="btn-agregar" data-id="${producto.id}">
-      Agregar al carrito
-    </button>
   `;
 
-  const btnRestar = card.querySelector(".btn-restar");
-  const btnSumar = card.querySelector(".btn-sumar");
+  const btnRestar = card.querySelector(".producto-card__acciones .btn-restar");
+  const btnSumar = card.querySelector(".producto-card__acciones .btn-sumar");
   const numeroCantidad = card.querySelector(".numero-cantidad");
-  const subtotal = card.querySelector(".subtotal");
+  const subtotal = card.querySelector(".producto-card__subtotal");
 
   let cantidad = 1;
 
@@ -246,6 +276,9 @@ function crearCard(producto) {
     numeroCantidad.textContent = cantidad;
     subtotal.textContent =
       "Subtotal: " + formatearPrecio(producto.precio * cantidad);
+
+    /* Mínimo 1 */
+    btnRestar.disabled = cantidad === 1;
   }
 
   function restar() {
@@ -260,6 +293,9 @@ function crearCard(producto) {
     actualizarCantidad();
   }
 
+  /* Estado inicial */
+  actualizarCantidad();
+
   btnRestar.addEventListener("click", restar);
   btnSumar.addEventListener("click", sumar);
 
@@ -269,17 +305,18 @@ function crearCard(producto) {
 /* Muestra en la página las cards de una categoría */
 function renderProductos(contenedor, categoria) {
   contenedor.innerHTML = "";
+  let encontrados = 0;
 
-  const filtrados = productos.filter((p) => p.categoria === categoria);
-
-  if (filtrados.length === 0) {
-    contenedor.innerHTML =
-      '<p style="text-align:center; color:#666;">No hay productos en esta categoría.</p>';
-    return;
+  for (const producto of productos) {
+    if (producto.categoria === categoria) {
+      contenedor.appendChild(crearCard(producto));
+      encontrados++;
+    }
   }
 
-  for (const producto of filtrados) {
-    contenedor.appendChild(crearCard(producto));
+  if (encontrados === 0) {
+    contenedor.innerHTML =
+      '<p class="sin-productos">No hay productos en esta categoría.</p>';
   }
 }
 
@@ -292,6 +329,7 @@ function renderHomeProductos(contenedor) {
 
   for (const categoria of categorias) {
     let mostrados = 0;
+
     for (const producto of productos) {
       if (producto.categoria === categoria && mostrados < productosPorCategoria) {
         contenedor.appendChild(crearCard(producto));
@@ -301,15 +339,16 @@ function renderHomeProductos(contenedor) {
   }
 }
 
-/* Devuelve los productos de una categoría */
-function obtenerProductosPorCategoria(categoria) {
-  return productos.filter((p) => p.categoria === categoria);
-}
-
 /* Devuelve un producto por su ID */
 function obtenerProductoPorId(id) {
-  return productos.find((p) => p.id === id);
+  for (const producto of productos) {
+    if (producto.id === id) {
+      return producto;
+    }
+  }
+
+  return null;
 }
 
-/* Inicializa la carga de productos */
-cargarProductos();
+/* Carga inicial */
+const productosListos = cargarProductos();
