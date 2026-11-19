@@ -47,22 +47,24 @@ El proyecto se hizo en 4 etapas, estas son:
 
 ## 4. Video explicativo del Proyecto
 
-📹 **Link al video:** [Pendiente de grabacion]
+📹 **Link al video:** https://drive.google.com/file/d/19QgHs91kxpA5nv8Ub7YKMm4Xka3KYbst/view?usp=drive_link
+
+PD: Realize el video explicandolo para una persona que no entiende de codigo y quiere ver el producto finalizado, por eso solo explique el funcionamiento de la pagina web.
 
 ---
 
 ## 5. Estructura del proyecto
 
-| Carpeta / Archivo | Descripcion |
-|-------------------|------------|
-| `img/` | Imagenes de los productos. |
-| `js/` | Scripts del sitio web (datos de productos, navbar, cards, carrito, tema, login). |
-| `pages/` | Paginas del sitio web (login, registro, categorias, carrito). |
-| `styles/` | Disenos, colores, estilos, etc. |
-| `.gitignore` | Archivos que no se suben al repositorio. |
-| `ENTREGA_FINAL.md` | Documento final de la entrega. |
-| `README.md` | Documento de inicio / descripcion del proyecto. |
-| `index.html` | Archivo principal del sitio. |
+| Carpeta / Archivo  | Descripcion                                                                      |
+| ------------------ | -------------------------------------------------------------------------------- |
+| `img/`             | Imagenes de los productos.                                                       |
+| `js/`              | Scripts del sitio web (datos de productos, navbar, cards, carrito, tema, login). |
+| `pages/`           | Paginas del sitio web (login, registro, categorias, carrito).                    |
+| `styles/`          | Disenos, colores, estilos, etc.                                                  |
+| `.gitignore`       | Archivos que no se suben al repositorio.                                         |
+| `ENTREGA_FINAL.md` | Documento final de la entrega.                                                   |
+| `README.md`        | Documento de inicio / descripcion del proyecto.                                  |
+| `index.html`       | Archivo principal del sitio.                                                     |
 
 ---
 

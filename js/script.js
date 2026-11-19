@@ -83,7 +83,7 @@ function manejarRegistro(evento) {
     return;
   }
 
-  /* Guardar solo datos básicos, sin contraseña */
+  /* Guardar solo datos básicos */
   const usuario = {
     nombre: nombre,
     apellido: apellido,
